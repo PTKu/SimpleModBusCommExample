@@ -10,6 +10,6 @@ This project uses:
 
 To run this project you will need to register and get Inxton develope license [here](https://inxton.com/register).
 
-Full project download [here](https://github.com/PTKu/SimpleModBusCommExample/releases/download/untagged-a16e5442a408d409d282/XAE_ModbusExample.zip)
+Full project download [here](https://github.com/PTKu/SimpleModBusCommExample/releases/download/v0.0.0/XAE_ModbusExample.zip)
 
 
