@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <POU Name="MAIN" Id="{4cb653d2-485a-437a-9c01-820cb0a55b64}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	// More about context and tasks here: https://docs.tcopengroup.org/articles/TcOpenFramework/application.html
+	_context : ModBusContext;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// This runs the context.
+_context.Run();]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

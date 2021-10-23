@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <POU Name="ModBusContext" Id="{7cbc1e11-a589-4b63-ae45-41f613aee5d7}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK ModBusContext EXTENDS TcoCore.TcoContext
+VAR
+	// Remote task
+	_touchModbus : TcoCore.TcoRemoteTask(THIS^);  
+END_VAR
+
+VAR
+	// Accessing these variables.
+	modbusvar1 : INT;
+	modbusvar2 : INT;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="Main" Id="{c57cd304-ae00-4504-a434-56c09c162b06}">
+      <Declaration><![CDATA[(*~
+	<docu>
+		<summary>
+			Main method of the TcoContext. This is the entry point of any control logic that belongs to this context. 
+			The call of this method is ensured by calling the <c>InstanceName.Run()</c> method, and it must not be called explicitly.
+			This method is abstract, and it must be overridden in derived block.
+		</summary>
+	</docu>
+~*)
+METHOD PROTECTED  Main]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Invoke fires the execution of C# code handling ModBus communication
+IF(_touchModbus.Invoke().Done OR _touchModbus.Error) THEN
+	// When done or failure this kicks the remote call again.
+	_touchModbus.Restore();	
+END_IF
+
+// You just need to call this...
+_touchModbus();
+
+
+]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>
